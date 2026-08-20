@@ -12,9 +12,9 @@
  * `CREATE TABLE IF NOT EXISTS`, so re-running it costs one cheap round trip
  * per cold start, never per request.
  *
- * The filename catches every /api/* path in one function without a
- * vercel.json rewrite: Express already does its own internal routing by
- * req.url, so one catch-all handing the whole app the request is enough.
+ * vercel.json rewrites every path here, so this one function gets the whole
+ * app's traffic; Express does its own internal routing from there by
+ * req.url, same as it always has.
  */
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import { createApp } from '../src/app.js'
