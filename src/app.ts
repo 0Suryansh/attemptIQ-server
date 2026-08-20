@@ -68,9 +68,10 @@ export function createApp(): Express {
           'script-src': ["'self'", 'https://apis.google.com', 'https://www.googletagmanager.com'],
           'style-src': ["'self'", "'unsafe-inline'"],
           'font-src': ["'self'"],
-          // Question figures come from the bank's source host; Google serves
-          // the avatar of a signed-in user.
-          'img-src': ["'self'", 'data:', 'https://cracku.in', 'https://lh3.googleusercontent.com'],
+          // Google serves the avatar of a signed-in user. Not allowlisted:
+          // the ~40 questions whose figure is a "Match List" table image,
+          // hotlinked from the bank's source host -- those just won't load.
+          'img-src': ["'self'", 'data:', 'https://lh3.googleusercontent.com'],
           // Firebase Auth: token exchange and the installations/config calls
           // its SDK makes on start-up.
           'connect-src': [
